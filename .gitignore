@@ -8,6 +8,7 @@ __pycache__/
 reports/
 screenshots/
 *.png
+github test result report/
 
 # Virtual environments
 venv/

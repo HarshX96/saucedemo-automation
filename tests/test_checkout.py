@@ -10,7 +10,7 @@ def _login(driver, username):
     login.enter_username(username)
     login.enter_password("secret_sauce")
     login.click_login()
-    time.sleep(2)
+    time.sleep(3)
 
 
 def _go_to_checkout_step_one(driver, username, product=None):
@@ -20,10 +20,10 @@ def _go_to_checkout_step_one(driver, username, product=None):
     inventory.add_item_to_cart(prod)
     time.sleep(1)
     inventory.click_cart()
-    time.sleep(1)
+    time.sleep(2)
     cart = CartPage(driver)
     cart.click_checkout()
-    time.sleep(1)
+    time.sleep(2)
 
 
 def _go_to_checkout_overview(driver, username, product=None):
@@ -33,14 +33,14 @@ def _go_to_checkout_overview(driver, username, product=None):
     checkout.enter_last_name(CHECKOUT_INFO["last_name"])
     checkout.enter_zip(CHECKOUT_INFO["postal_code"])
     checkout.click_continue()
-    time.sleep(1)
+    time.sleep(2)
 
 
 def _complete_full_order(driver, username, product=None):
     _go_to_checkout_overview(driver, username, product)
     checkout = CheckoutPage(driver)
     checkout.click_finish()
-    time.sleep(1)
+    time.sleep(2)
 
 
 # ============================================================

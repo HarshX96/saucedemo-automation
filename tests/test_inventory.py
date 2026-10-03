@@ -10,7 +10,7 @@ def _login(driver, username):
     login.enter_username(username)
     login.enter_password("secret_sauce")
     login.click_login()
-    time.sleep(2)
+    time.sleep(3)
 
 
 # --- Product Display Tests (1–10) ---
@@ -188,7 +188,7 @@ def test_badge_stays_after_cart_round_trip(driver, username):
     inventory.add_item_to_cart(PRODUCT_IDS[0])
     time.sleep(1)
     inventory.click_cart()
-    time.sleep(1)
+    time.sleep(2)
     cart = CartPage(driver)
     cart.click_continue_shopping()
     time.sleep(1)
@@ -204,7 +204,7 @@ def test_reset_app_state_clears_cart(driver, username):
     time.sleep(1)
     assert inventory.get_cart_badge_count() == "1"
     inventory.click_burger_menu()
-    time.sleep(1)
+    time.sleep(2)
     inventory.click_reset()
     time.sleep(1)
     inventory.close_burger_menu()
@@ -223,7 +223,7 @@ def test_reset_app_state_reverts_buttons(driver, username):
     time.sleep(1)
     assert inventory.get_item_button_text(PRODUCT_IDS[0]) == LABELS["remove_btn"]
     inventory.click_burger_menu()
-    time.sleep(1)
+    time.sleep(2)
     inventory.click_reset()
     time.sleep(1)
     inventory.close_burger_menu()
@@ -240,7 +240,7 @@ def test_cart_icon_opens_cart_page(driver, username):
     _login(driver, username)
     inventory = InventoryPage(driver)
     inventory.click_cart()
-    time.sleep(1)
+    time.sleep(2)
     assert "cart.html" in driver.current_url
 
 

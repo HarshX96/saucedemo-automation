@@ -10,7 +10,7 @@ def _login(driver, username):
     login.enter_username(username)
     login.enter_password("secret_sauce")
     login.click_login()
-    time.sleep(2)
+    time.sleep(3)
 
 
 # ============================================================
