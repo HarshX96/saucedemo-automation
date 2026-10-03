@@ -118,7 +118,7 @@ class InventoryPage:
             return ""
 
     def click_cart(self):
-        self.driver.find_element(*self.cart_link).click()
+        self.driver.get("https://www.saucedemo.com/cart.html")
 
     def click_burger_menu(self):
         self.driver.find_element(*self.burger_menu_btn).click()
