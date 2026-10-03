@@ -1,0 +1,64 @@
+name: SauceDemo QA Automation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      test_type:
+        description: 'Choose test suite to run'
+        required: true
+        default: 'smoke'
+        type: choice
+        options:
+          - smoke
+          - all
+      workers:
+        description: 'Number of parallel workers'
+        required: true
+        default: '4'
+        type: choice
+        options:
+          - '2'
+          - '4'
+          - '8'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Run Selenium PyTest Suite
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Tests (Smoke)
+        if: "${{ github.event_name != 'workflow_dispatch' || github.event.inputs.test_type == 'smoke' }}"
+        run: |
+          pytest -m smoke -n ${{ github.event.inputs.workers || '4' }} --html=reports/report.html --self-contained-html || true
+
+      - name: Run Tests (Full Suite)
+        if: "${{ github.event_name == 'workflow_dispatch' && github.event.inputs.test_type == 'all' }}"
+        run: |
+          pytest -n ${{ github.event.inputs.workers || '4' }} --html=reports/report.html --self-contained-html || true
+
+      - name: Upload Test Report Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: saucedemo-test-report
+          path: reports/report.html
+          retention-days: 14
