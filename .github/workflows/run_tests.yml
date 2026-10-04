@@ -16,6 +16,19 @@ on:
           - smoke
           - all
           - standard_user
+          - problem_user
+          - error_user
+          - visual_user
+          - standard_and_problem
+          - standard_and_error
+          - standard_and_visual
+          - problem_and_error
+          - problem_and_visual
+          - error_and_visual
+          - standard_problem_error
+          - standard_problem_visual
+          - standard_error_visual
+          - problem_error_visual
       workers:
         description: 'Number of parallel workers'
         required: true
@@ -46,20 +59,62 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run Tests (Smoke)
-        if: "${{ github.event_name != 'workflow_dispatch' || github.event.inputs.test_type == 'smoke' }}"
+      - name: Run Tests
         run: |
-          pytest -m smoke -n ${{ github.event.inputs.workers || '4' }} --html=reports/report.html --self-contained-html || true
-
-      - name: Run Tests (Full Suite)
-        if: "${{ github.event_name == 'workflow_dispatch' && github.event.inputs.test_type == 'all' }}"
-        run: |
-          pytest -n ${{ github.event.inputs.workers || '4' }} --html=reports/report.html --self-contained-html || true
-
-      - name: Run Tests (Standard User Only)
-        if: "${{ github.event_name == 'workflow_dispatch' && github.event.inputs.test_type == 'standard_user' }}"
-        run: |
-          pytest -k "standard_user" -n ${{ github.event.inputs.workers || '4' }} --html=reports/report.html --self-contained-html || true
+          WORKERS="${{ github.event.inputs.workers || '4' }}"
+          case "${{ github.event.inputs.test_type || 'smoke' }}" in
+            smoke)
+              pytest -m smoke -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            all)
+              pytest -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            standard_user)
+              pytest -k "standard_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            problem_user)
+              pytest -k "problem_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            error_user)
+              pytest -k "error_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            visual_user)
+              pytest -k "visual_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            standard_and_problem)
+              pytest -k "standard_user or problem_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            standard_and_error)
+              pytest -k "standard_user or error_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            standard_and_visual)
+              pytest -k "standard_user or visual_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            problem_and_error)
+              pytest -k "problem_user or error_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            problem_and_visual)
+              pytest -k "problem_user or visual_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            error_and_visual)
+              pytest -k "error_user or visual_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            standard_problem_error)
+              pytest -k "standard_user or problem_user or error_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            standard_problem_visual)
+              pytest -k "standard_user or problem_user or visual_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            standard_error_visual)
+              pytest -k "standard_user or error_user or visual_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            problem_error_visual)
+              pytest -k "problem_user or error_user or visual_user" -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+            *)
+              pytest -m smoke -n $WORKERS --html=reports/report.html --self-contained-html || true
+              ;;
+          esac
 
       - name: Upload Test Report Artifact
         if: always()
@@ -68,3 +123,4 @@ jobs:
           name: saucedemo-test-report
           path: reports/report.html
           retention-days: 14
+
