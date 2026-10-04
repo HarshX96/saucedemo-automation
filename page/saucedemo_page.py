@@ -213,7 +213,7 @@ class InventoryPage:
 
     def get_product_description(self, product_id):
         return self.driver.find_element(
-            By.XPATH, f"//div[@class='inventory_item'][.//button[contains(@id, '{product_id}')]]//div[contains(@class,'inventory_item_desc')]"
+            By.XPATH, f"//div[@class='inventory_item'][.//button[contains(@id, '{product_id}')]]//div[@data-test='inventory-item-desc']"
         ).text
 
     def get_product_image_src(self, product_id):

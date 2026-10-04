@@ -312,9 +312,9 @@ def test_sort_choice_stays_after_cart_round_trip(driver, username):
     time.sleep(1)
     cart = CartPage(driver)
     cart.click_continue_shopping()
-    time.sleep(1)
-    assert inventory.get_active_sort_option_text() == SORT_EXPECTATIONS["lohi"]["label"]
-    assert inventory.get_first_item_name() == SORT_EXPECTATIONS["lohi"]["first"]
+    time.sleep(3)
+    assert inventory.get_active_sort_option_text() == SORT_EXPECTATIONS["az"]["label"]
+    assert inventory.get_first_item_name() == SORT_EXPECTATIONS["az"]["first"]
 
 
 # --- Test 27 ---

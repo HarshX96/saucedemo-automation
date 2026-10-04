@@ -29,7 +29,7 @@ PRODUCT_DATA = {
         "description": "carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.",
         "image": "https://www.saucedemo.com/assets/sauce-backpack-1200x1500-CjRW-Djj.jpg",
         "alt": "Sauce Labs Backpack",
-        "detail_link": "https://www.saucedemo.com/inventory-item.html?id=4",
+        "detail_link": "https://www.saucedemo.com/inventory.html#",
     },
     "sauce-labs-bike-light": {
         "name": "Sauce Labs Bike Light",
@@ -37,7 +37,7 @@ PRODUCT_DATA = {
         "description": "A red light isn't the desired state in testing but it sure helps when riding your bike at night. Water-resistant with 3 lighting modes, 1 AAA battery included.",
         "image": "https://www.saucedemo.com/assets/bike-light-1200x1500-DxcZRFOA.jpg",
         "alt": "Sauce Labs Bike Light",
-        "detail_link": "https://www.saucedemo.com/inventory-item.html?id=0",
+        "detail_link": "https://www.saucedemo.com/inventory.html#",
     },
     "sauce-labs-bolt-t-shirt": {
         "name": "Sauce Labs Bolt T-Shirt",
@@ -45,7 +45,7 @@ PRODUCT_DATA = {
         "description": "Get your testing superhero on with the Sauce Labs bolt T-shirt. From American Apparel, 100% ringspun combed cotton, heather gray with red bolt.",
         "image": "https://www.saucedemo.com/assets/bolt-shirt-1200x1500-mR0ldpVS.jpg",
         "alt": "Sauce Labs Bolt T-Shirt",
-        "detail_link": "https://www.saucedemo.com/inventory-item.html?id=1",
+        "detail_link": "https://www.saucedemo.com/inventory.html#",
     },
     "sauce-labs-fleece-jacket": {
         "name": "Sauce Labs Fleece Jacket",
@@ -53,7 +53,7 @@ PRODUCT_DATA = {
         "description": "It's not every day that you come across a midweight quarter-zip fleece jacket capable of handling everything from a relaxing day outdoors to a busy day at the office.",
         "image": "https://www.saucedemo.com/assets/sauce-pullover-1200x1500-BfbI-PSd.jpg",
         "alt": "Sauce Labs Fleece Jacket",
-        "detail_link": "https://www.saucedemo.com/inventory-item.html?id=5",
+        "detail_link": "https://www.saucedemo.com/inventory.html#",
     },
     "sauce-labs-onesie": {
         "name": "Sauce Labs Onesie",
@@ -61,7 +61,7 @@ PRODUCT_DATA = {
         "description": "Rib snap infant onesie for the junior automation engineer in development. Reinforced 3-snap bottom closure, two-needle hemmed sleeved and bottom won't unravel.",
         "image": "https://www.saucedemo.com/assets/red-onesie-1200x1500-BrSuq0ic.jpg",
         "alt": "Sauce Labs Onesie",
-        "detail_link": "https://www.saucedemo.com/inventory-item.html?id=2",
+        "detail_link": "https://www.saucedemo.com/inventory.html#",
     },
     "test.allthethings()-t-shirt-(red)": {
         "name": "Test.allTheThings() T-Shirt (Red)",
@@ -69,7 +69,7 @@ PRODUCT_DATA = {
         "description": "This classic Sauce Labs t-shirt is perfect to wear when cozying up to your keyboard to automate a few tests. Super-soft and comfy ringspun combed cotton.",
         "image": "https://www.saucedemo.com/assets/red-tatt-1200x1500-E-qp6aYf.jpg",
         "alt": "Test.allTheThings() T-Shirt (Red)",
-        "detail_link": "https://www.saucedemo.com/inventory-item.html?id=3",
+        "detail_link": "https://www.saucedemo.com/inventory.html#",
     },
 }
 
