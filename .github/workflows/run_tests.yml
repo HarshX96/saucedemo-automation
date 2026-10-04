@@ -15,6 +15,7 @@ on:
         options:
           - smoke
           - all
+          - standard_user
       workers:
         description: 'Number of parallel workers'
         required: true
@@ -54,6 +55,11 @@ jobs:
         if: "${{ github.event_name == 'workflow_dispatch' && github.event.inputs.test_type == 'all' }}"
         run: |
           pytest -n ${{ github.event.inputs.workers || '4' }} --html=reports/report.html --self-contained-html || true
+
+      - name: Run Tests (Standard User Only)
+        if: "${{ github.event_name == 'workflow_dispatch' && github.event.inputs.test_type == 'standard_user' }}"
+        run: |
+          pytest -k "standard_user" -n ${{ github.event.inputs.workers || '4' }} --html=reports/report.html --self-contained-html || true
 
       - name: Upload Test Report Artifact
         if: always()
