@@ -1,7 +1,7 @@
 # SauceDemo QA Automation
 
 An end-to-end test automation suite for [saucedemo.com](https://www.saucedemo.com) built with **Python**, **Selenium**, and **pytest**.  
-Tests run automatically via **GitHub Actions** with parallel execution and selectable user profiles.
+Tests run on-demand via **GitHub Actions** with parallel execution and selectable user profiles.
 
 ---
 
@@ -121,14 +121,14 @@ pytest -n 4 --html=reports/report.html --self-contained-html
 
 ## CI/CD — GitHub Actions
 
-The workflow triggers on every push and can also be run manually from the **Actions** tab.
+The workflow is configured for manual execution on-demand from the **Actions** tab.
 
 ### Manual run options
 
 | Input | Options |
 |:------|:--------|
 | **Test suite** | `smoke`, `all`, `standard_user`, `problem_user`, `error_user`, `visual_user`, any combination of users, `rerun_failed` |
-| **Parallel workers** | `2`, `4`, `8` |
+| **Parallel workers** | `1` to `10` (default: `4`) |
 
 The HTML report is uploaded as a workflow artifact after every run (kept for 14 days).
 
