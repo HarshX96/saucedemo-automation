@@ -88,8 +88,8 @@ Tests run across 4 user profiles to validate different app behaviours:
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/HarshX96/-saucedemo-tests.git
-cd -saucedemo-tests
+git clone https://github.com/HarshX96/saucedemo-automation.git
+cd saucedemo-automation
 ```
 
 ### 2. Install dependencies
